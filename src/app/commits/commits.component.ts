@@ -9,20 +9,26 @@ import { CommitsService } from './commits.service';
   styleUrls: ['./commits.component.scss'],
 })
 export class CommitsComponent implements OnInit {
-  @Input() owner: string | undefined
-  @Input() repo: string | undefined
-  @ViewChild("op") overlay: OverlayPanel | undefined;
+  @Input() owner: string | undefined;
+  @Input() repo: string | undefined;
+  @ViewChild('op') overlay: OverlayPanel | undefined;
 
   commits: Commits[] = [];
   constructor(private commitsService: CommitsService) {}
 
   ngOnInit(): void {
-    this.commitsService.getCommits(this.owner, this.repo).subscribe((commits) => {
-      this.commits = commits;
-    });
+    this.commitsService
+      .getCommits(this.owner, this.repo)
+      .subscribe((commits) => {
+        this.commits = commits;
+      });
   }
 
+  /**
+   * Visits commit
+   * @param url
+   */
   visitCommit(url: string) {
-      window.open(url);
+    window.open(url);
   }
 }

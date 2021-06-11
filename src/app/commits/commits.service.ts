@@ -23,7 +23,7 @@ export class CommitsService {
     date.setDate(date.getDate() - 30);
 
     return this.http.get<Commits[]>(
-      `https://api.github.com/repos/${owner}/${repo}/commits?since${date.toISOString()}`
+      `https://api.github.com/repos/${owner}/${repo}/commits?per_page=100&since${date.toISOString()}`
     );
   }
 }

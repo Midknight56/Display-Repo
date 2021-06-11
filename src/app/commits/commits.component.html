@@ -1,6 +1,6 @@
-<p-overlayPanel #op [showCloseIcon]="true" style="width: 400px;">
+<p-overlayPanel #op [showCloseIcon]="true" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'">
     <ng-template pTemplate>
-        <p-virtualScroller [value]="commits" scrollHeight="400px" [itemSize]="170" [rows]="10" [lazy]="false" styleClass="v-scroller">
+        <p-virtualScroller [value]="commits" scrollHeight="250px" [itemSize]="170" [rows]="10" [lazy]="false">
             <ng-template pTemplate="header">
                 List of Commits for {{ repo }}.
                 <!-- <p-dropdown [options]="sortOptions" placeholder="Sort By" (onChange)="onSortChange()"
@@ -11,12 +11,12 @@
                     <div class="image-container">
                         <img src="{{commitInfo.author.avatar_url}}" [alt]="commitInfo.commit.author.name" class="resize" />
                     </div>
-                    <div class="">
-                        <h5 class="">{{commitInfo.commit.author.name}}</h5>
-                        <p class="">{{commitInfo.commit.message}}</p>
-                        <p class="">{{commitInfo.commit.author.date | date}}</p>
+                    <div>
+                        <h5>{{commitInfo.commit.author.name}}</h5>
+                        <p style="padding: 0 15px;">{{commitInfo.commit.message}}</p>
+                        <p>{{commitInfo.commit.author.date | date}}</p>
                     </div>
-                    <div class="">
+                    <div>
                         <p-button label="Go to commit" (onClick)="visitCommit(commitInfo.html_url)"></p-button>
                     </div>
                 </div>
