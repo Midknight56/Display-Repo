@@ -1,0 +1,15 @@
+.container {
+    padding: 1rem;
+
+    .center {
+        text-align: center;
+        .fill {
+            p-button::ng-deep {
+                .button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+

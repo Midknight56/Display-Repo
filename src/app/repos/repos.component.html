@@ -1,0 +1,52 @@
+<div class="card">
+    <p-dataView #dv [value]="repos" [paginator]="true" [rows]="12" filterBy="name" [sortField]="sortField"
+        [sortOrder]="sortOrder" layout="grid">
+        <ng-template pTemplate="header">
+            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+                <p-dropdown [options]="sortOptions" placeholder="Sort by ..." (onChange)="onSortChange($event)"
+                    styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            </div>
+        </ng-template>
+        <ng-template let-repo pTemplate="listItem">
+            <div class="p-col-12 container">
+                <div class="product-list-item">
+                    <div class="product-list-detail">
+                        <i class="pi pi-book product-category-icon"></i>
+                        <span class="product-category">{{repo.language ? repo.language : 'Not Specified.'}}</span>
+                        <div class="product-name">{{repo.name}}</div>
+                        <div class="product-description">{{repo.description ? repo.description : 'No Description Provided.'}}</div>
+                    </div>
+                    <div class="product-list-action">
+                        <p-button icon="pi pi-comments" label="View Commits" (onClick)="handleDisplay(op)"></p-button>
+                        <app-commits [owner]="owner" [repo]="repo.name" #op></app-commits>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template let-repo pTemplate="gridItem">
+            <div class="p-col-12 p-md-4 container">
+                <div class="product-grid-item card">
+                    <div class="product-grid-item-top">
+                        <div>
+                            <i class="pi pi-book product-category-icon"></i>
+                            <span class="product-category">{{repo.language ? repo.language : 'Not Specified.'}}</span>
+                        </div>
+                    </div>
+                    <div class="product-grid-item-content">
+                        <div class="product-name">{{repo.name}}</div>
+                        <div style="height: 100px; min-height: 100px;">
+                            {{repo.description ? repo.description : 'No Description Provided.'}}
+                        </div>
+                    </div>
+                    <div class="product-grid-item-bottom center">
+                        <p-button icon="pi pi-comments fill" label="View Commits" (onClick)="handleDisplay(op)">
+                        </p-button>
+
+                        <app-commits [owner]="owner" [repo]="repo.name" #op></app-commits>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
