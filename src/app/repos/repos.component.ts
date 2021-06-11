@@ -31,7 +31,6 @@ export class ReposComponent implements OnInit {
 
   ngOnInit(): void {
     this.reposService.getRepos().subscribe((repos) => {
-      console.log(repos);
       this.repos = repos;
       this.getInfo();
     });

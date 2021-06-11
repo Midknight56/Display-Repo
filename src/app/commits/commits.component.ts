@@ -23,7 +23,6 @@ export class CommitsComponent implements OnInit {
   }
 
   visitCommit(url: string) {
-      console.log(url)
       window.open(url);
   }
 }
